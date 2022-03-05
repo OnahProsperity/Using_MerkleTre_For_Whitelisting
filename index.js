@@ -26,16 +26,22 @@ createHdWallet = async (accountIndex) => {
     // whiteListedAddress.push(address)
 
     // whiteListedAddressPrivateKey.push(privatKey)
-    // console.log(privatKey, address)
-    return(privatKey, address)
-}
-
-createMultiAddress = async () => {
-    for(let i = 0; i <= 100; i++) {
-
+    // console.log( {"address":address, "privateKey":privatKey })
+    return {
+        "address":address,
+        "privateKey":privatKey
     }
 }
 
-createHdWallet(0)
+createMultiAddress = async () => {
+
+    for(let i = 0; i <= 1; i++) {
+       var rec = await createHdWallet(i);
+        
+       console.log("hello.",  rec["address"])
+    }
+}
+createMultiAddress()
+// createHdWallet(0)
 console.log(whiteListedAddressPrivateKey)
 console.log(whiteListedAddress)
