@@ -21,11 +21,12 @@
   },
   "homepage": "https://github.com/OnahProsperity/Using_MerkleTre_For_Whitelisting#readme",
   "dependencies": {
-    "keccak256": "^1.0.6",
-    "merkletreejs": "^0.2.30",
+    "@openzeppelin/contracts": "^4.5.0",
     "bip32": "^2.0.6",
     "bip39": "^3.0.4",
     "hdkey": "^2.0.1",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.30",
     "web3": "^1.7.1"
   }
 }

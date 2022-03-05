@@ -5,7 +5,6 @@ const bip39 = require('bip39')
 const HDKey = require('hdkey')
 const ethUtil = require('ethereumjs-util')
 const createHash = require('create-hash')
-// require('dotenv-defaults').config()
 
 let whiteListedAddress = []
 let whiteListedAddressPrivateKey = []
