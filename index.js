@@ -49,7 +49,16 @@ createArg = async () => {
     const leaves = argAddr.map(addresses => keccak256(addresses))
     const tree = new MerkleTree(leaves, keccak256, {sortPairs : true})
     const root = tree.getRoot().toString('hex')
+    // you can as well hash the address
+    // const leaf = keccak256(argAddr[0])
+
     console.log('Whitelisted Merkle tree\n', tree.toString())
-    console.log("Array Arg: ", argAddr, "Array Private key: ", pKey)
+    // console.log("Array Arg: ", argAddr, "Array Private key: ", pKey)
+
+    const leaf = leaves[0]
+    const realAddress = tree.getProof(leaf)
+
+    console.log("is this address whitelisted ? : ",tree.verify(realAddress, leaf, root)) // false
+
 }
 createArg()
