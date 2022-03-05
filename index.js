@@ -1,6 +1,6 @@
 const { MerkleTree } = require('merkletreejs')
 const keccak256 = require('keccak256')
-const Web3 = require('web3');
+// const Web3 = require('web3');
 const bip39 = require('bip39')
 const HDKey = require('hdkey')
 const ethUtil = require('ethereumjs-util')
@@ -29,7 +29,7 @@ createHdWallet = async (accountIndex) => {
 }
 
 createMultiAddress = async () => {
-    for(let i = 0; i <= 5; i++) {
+    for(let i = 0; i <= 10; i++) {
        var rec = await createHdWallet(i);
        var addr = rec["address"]
        var pKey = rec["privateKey"]
@@ -46,7 +46,10 @@ createArg = async () => {
     var arg = await createMultiAddress();
     var argAddr = arg["argAddress"]
     var pKey = arg["argPrivateKey"]
-    console.log("Array Arg: ", argAddr)
-
+    const leaves = argAddr.map(addresses => keccak256(addresses))
+    const tree = new MerkleTree(leaves, keccak256, {sortPairs : true})
+    const root = tree.getRoot().toString('hex')
+    console.log('Whitelisted Merkle tree\n', tree.toString())
+    console.log("Array Arg: ", argAddr, "Array Private key: ", pKey)
 }
 createArg()
