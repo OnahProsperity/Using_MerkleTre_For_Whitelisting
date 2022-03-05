@@ -5,10 +5,11 @@ const bip39 = require('bip39')
 const HDKey = require('hdkey')
 const ethUtil = require('ethereumjs-util')
 const createHash = require('create-hash')
-require('dotenv-defaults').config()
+// require('dotenv-defaults').config()
 
 let whiteListedAddress = []
 let whiteListedAddressPrivateKey = []
+
 createHdWallet = async (accountIndex = 0) => {
     let mnemonic = await bip39.generateMnemonic();
     let seed = await bip39.mnemonicToSeed(mnemonic)
@@ -22,8 +23,17 @@ createHdWallet = async (accountIndex = 0) => {
     const addr = "0x" + ethUtil.publicToAddress(pubKeyBSC).toString('hex');
     const address = ethUtil.toChecksumAddress(addr);
 
+    // whiteListedAddress.push(address)
+
+    // whiteListedAddressPrivateKey.push(privatKey)
+    // console.log(privatKey, address)
     return(privatKey, address)
 }
 
+createMultiAddress = async (accountIndex = 0) => {
+    
+}
 
-console.log(address)
+createHdWallet()
+console.log(whiteListedAddressPrivateKey)
+console.log(whiteListedAddress)
