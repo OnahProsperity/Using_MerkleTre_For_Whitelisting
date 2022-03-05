@@ -10,7 +10,7 @@ const createHash = require('create-hash')
 let whiteListedAddress = []
 let whiteListedAddressPrivateKey = []
 
-createHdWallet = async (accountIndex = 0) => {
+createHdWallet = async (accountIndex) => {
     let mnemonic = await bip39.generateMnemonic();
     let seed = await bip39.mnemonicToSeed(mnemonic)
     let root = HDKey.fromMasterSeed(seed);
@@ -30,10 +30,12 @@ createHdWallet = async (accountIndex = 0) => {
     return(privatKey, address)
 }
 
-createMultiAddress = async (accountIndex = 0) => {
-    
+createMultiAddress = async () => {
+    for(let i = 0; i <= 100; i++) {
+
+    }
 }
 
-createHdWallet()
+createHdWallet(0)
 console.log(whiteListedAddressPrivateKey)
 console.log(whiteListedAddress)
