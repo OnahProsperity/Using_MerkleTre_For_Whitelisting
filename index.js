@@ -56,9 +56,13 @@ createArg = async () => {
     // console.log("Array Arg: ", argAddr, "Array Private key: ", pKey)
 
     const leaf = leaves[0]
+    const badLeaf = "0xC16535c11B9E8da7b2DaAbF83f86BA50486924E6" // test addr
     const realAddress = tree.getProof(leaf)
+    const badAddress = tree.getProof(badLeaf)
 
-    console.log("is this address whitelisted ? : ",tree.verify(realAddress, leaf, root)) // false
+    console.log("is this address whitelisted ? : ",tree.verify(realAddress, leaf, root)) // true
+    console.log("is this address whitelisted ? : ",tree.verify(badAddress, badLeaf, root)) // false
+
 
 }
 createArg()
