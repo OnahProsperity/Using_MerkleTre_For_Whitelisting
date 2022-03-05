@@ -22,11 +22,6 @@ createHdWallet = async (accountIndex) => {
     const privatKey = addrNodeBSC._privateKey.toString('hex');
     const addr = "0x" + ethUtil.publicToAddress(pubKeyBSC).toString('hex');
     const address = ethUtil.toChecksumAddress(addr);
-
-    // whiteListedAddress.push(address)
-
-    // whiteListedAddressPrivateKey.push(privatKey)
-    // console.log( {"address":address, "privateKey":privatKey })
     return {
         "address":address,
         "privateKey":privatKey
@@ -34,14 +29,24 @@ createHdWallet = async (accountIndex) => {
 }
 
 createMultiAddress = async () => {
-
-    for(let i = 0; i <= 1; i++) {
+    for(let i = 0; i <= 5; i++) {
        var rec = await createHdWallet(i);
-        
-       console.log("hello.",  rec["address"])
+       var addr = rec["address"]
+       var pKey = rec["privateKey"]
+       whiteListedAddress.push(addr)
+       whiteListedAddressPrivateKey.push(pKey)       
+    }
+    return {
+        "argAddress":whiteListedAddress,
+        "argPrivateKey":whiteListedAddressPrivateKey
     }
 }
-createMultiAddress()
-// createHdWallet(0)
-console.log(whiteListedAddressPrivateKey)
-console.log(whiteListedAddress)
+
+createArg = async () => {
+    var arg = await createMultiAddress();
+    var argAddr = arg["argAddress"]
+    var pKey = arg["argPrivateKey"]
+    console.log("Array Arg: ", argAddr)
+
+}
+createArg()
