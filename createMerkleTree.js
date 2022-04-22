@@ -61,7 +61,5 @@ createArg = async () => {
 
     console.log("is this address whitelisted ? : ",tree.verify(realAddress, leaf, root)) // true
     console.log("is this address whitelisted ? : ",tree.verify(badAddress, badLeaf, root)) // false
-
-
 }
 createArg()
